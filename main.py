@@ -1,11 +1,12 @@
 def main():
-    with open("books/Frankenstein.txt") as f:
+    book_path = "books/Frankenstein.txt"
+    with open(book_path) as f:
         file_contents = f.read()
         #print(file_contents)
         #print(count_words(file_contents))
         #print(count_letters(file_contents))
-        print(generate_report(file_contents))
-
+        #print(generate_report(file_contents))
+        print_report(file_contents, book_path)
 
 def count_words(book):
     word_count = 0
@@ -51,4 +52,14 @@ def generate_report(book):
     letter_list.sort(key= sort_on, reverse= True)
     
     return letter_list
+
+def print_report (book, book_path):
+    print(f"--- Begin report of" , book_path, "---")
+    print(count_words(book), "words found in the document")
+    letter_count = generate_report(book)
+    for dictionary in letter_count:
+        letter = dictionary["Letter"]
+        count = dictionary["Count"]
+        print(f"The",letter, "character was found",count,"times")
+    print("--- End report ---")
 main()
