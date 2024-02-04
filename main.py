@@ -3,8 +3,8 @@ def main():
         file_contents = f.read()
         #print(file_contents)
         #print(count_words(file_contents))
-       # print(count_letters(file_contents))
-        print(print_report(file_contents))
+        #print(count_letters(file_contents))
+        print(generate_report(file_contents))
 
 
 def count_words(book):
@@ -38,6 +38,7 @@ def generate_report(book):
     remove_dict = []
     letter_list = []
 
+    #Generating a list of items not letters to later remove from letter_dict because wouldn't let me delete directly in for loop
     for check in letter_dict:
         if check.isalpha() == False:
             remove_dict.append(check)
